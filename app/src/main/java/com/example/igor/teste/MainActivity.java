@@ -3,8 +3,13 @@ package com.example.igor.teste;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
+
+    CountryAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,6 +2,8 @@ package com.example.igor.teste;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.GridView;
 import java.util.ArrayList;
 
 public class CountryFragment extends Fragment {
+
+    CountryAdapter adapter;
 
     public CountryFragment() {
         // Required empty public constructor
@@ -20,16 +24,20 @@ public class CountryFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_country, container, false);
 
-        GridView gridview = (GridView) rootView.findViewById(R.id.grid_view_image_text);
         String[] gridViewString = {"Vancouver", "Totonto"};
         int[] gridViewImageId = {R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
-        /*ArrayList<State> states = new ArrayList<>();
-        states.add(new State(R.drawable.ic_launcher_background, "Vancouver"));
-        states.add(new State(R.drawable.ic_launcher_background, "Totonto"));*/
-        gridview.setAdapter(new CountryAdapter(getActivity(), gridViewString, gridViewImageId));
+
+        RecyclerView recyclerView = rootView.findViewById(R.id.rvStates);
+        int numberOfColumns = 2;
+        //AutoGridLayoutManager layoutManager = new AutoGridLayoutManager(rootView.getContext(), 500);
+        //recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), numberOfColumns));
+
+        adapter = new CountryAdapter(rootView.getContext(), gridViewString, gridViewImageId);
+        recyclerView.setAdapter(adapter);
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_country, container, false);
+        return rootView;
     }
 
 }
