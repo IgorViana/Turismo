@@ -1,0 +1,78 @@
+package com.example.igor.teste;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+public class CountryAdapter extends BaseAdapter {
+    private Context context;
+    private final String[] gridViewString;
+    private final int[] gridViewImageId;
+
+    public CountryAdapter(Context context, String[]gridViewString, int[]gridViewImageId) {
+        //super(context, 0, country);
+        this.context = context;
+        this.gridViewString = gridViewString;
+        this.gridViewImageId = gridViewImageId;
+    }
+
+    @Override
+    public int getCount() {
+        return gridViewString.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return gridViewImageId[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View gridViewAndroid;
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        if (convertView == null) {
+
+            gridViewAndroid = new View(context);
+            gridViewAndroid = inflater.inflate(R.layout.state, null);
+            TextView textViewAndroid = (TextView) gridViewAndroid.findViewById(R.id.CountryName);
+            ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.CountryImage);
+            textViewAndroid.setText(gridViewString[position]);
+            imageViewAndroid.setImageResource(gridViewImageId[position]);
+        } else {
+            gridViewAndroid = (View) convertView;
+        }
+
+        return gridViewAndroid;
+    }
+    /*public View getView(int position, View convertView, ViewGroup parent) {
+        View listItemView = convertView;
+        if(listItemView == null)
+        {
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.state, parent, false);
+        }
+        State currentCounty = getItem(position);
+
+        ImageView countryImage = listItemView.findViewById(R.id.CountryImage);
+        countryImage.setImageResource(currentCounty.getImageResourceId());
+
+        TextView countryName = listItemView.findViewById(R.id.CountryName);
+        countryName.setText(currentCounty.getmStateName());
+
+        return listItemView;
+    }*/
+}
