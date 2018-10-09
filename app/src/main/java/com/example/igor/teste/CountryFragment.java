@@ -29,9 +29,11 @@ public class CountryFragment extends Fragment {
 
         RecyclerView recyclerView = rootView.findViewById(R.id.rvStates);
         int numberOfColumns = 2;
-        //AutoGridLayoutManager layoutManager = new AutoGridLayoutManager(rootView.getContext(), 500);
-        //recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), numberOfColumns));
+        AutoGridLayoutManager layoutManager = new AutoGridLayoutManager(rootView.getContext(), display);
+        recyclerView.setLayoutManager(layoutManager);
+        //GridLayoutManager grid = new GridLayoutManager(rootView.getContext(), numberOfColumns);
+
+        //recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), numberOfColumns));
 
         adapter = new CountryAdapter(rootView.getContext(), gridViewString, gridViewImageId);
         recyclerView.setAdapter(adapter);
