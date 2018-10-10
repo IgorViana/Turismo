@@ -44,7 +44,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     }
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView myTextView;
         ImageView myImageId;
 
