@@ -20,8 +20,12 @@ public class AttractionsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_attractions, container, false);
 
-        String[] attractionNameString = {"Parque Nacional Banff", "Parque Nacional Jasper"};
-        int[] attractionImageId = {R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
+        String[] attractionNameString = {"Parque Nacional Banff", "Parque Nacional Jasper", "Parque Stanley"
+                , "Torre CN", "Lago Moraine", "Lago Louise"
+                , "Parque Nacional Yoho", "Jardins de Butchart", "Ponte Suspensa de Capilano"};
+        int[] attractionImageId = {R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background
+                , R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background
+                , R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
 
         RecyclerView recyclerView = rootView.findViewById(R.id.rvAttraction);
         int numberOfColumns = 3;

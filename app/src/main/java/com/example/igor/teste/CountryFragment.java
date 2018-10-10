@@ -24,8 +24,13 @@ public class CountryFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_country, container, false);
 
-        String[] gridViewString = {"Vancouver", "Totonto"};
-        int[] gridViewImageId = {R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
+        String[] gridViewString = {"Ontário", "Quebec", "Colúmbia Britânica", "Alberta", "Nova Escócia", "Manitoba",
+                "Saskatchewan", "New Brunswick", "Terra Nova e Labrador", "Ilha do Príncipe Eduardo\n"};
+        int[] gridViewImageId = {R.drawable.ic_launcher_background, R.drawable.ic_launcher_background,
+                R.drawable.ic_launcher_background, R.drawable.ic_launcher_background,
+                R.drawable.ic_launcher_background, R.drawable.ic_launcher_background,
+                R.drawable.ic_launcher_background, R.drawable.ic_launcher_background,
+                R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
 
         RecyclerView recyclerView = rootView.findViewById(R.id.rvStates);
         int numberOfColumns = 2;
