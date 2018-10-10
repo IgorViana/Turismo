@@ -8,14 +8,14 @@
         android:id="@+id/placeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restaurante 1"/>
+        android:text="Restaurante 1" />
 
     <TextView
         android:id="@+id/placeLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="textEnd"
+        android:gravity="end"
         android:text="Montreal, Que"
-        android:gravity="end" />
+        android:textAlignment="textEnd" />
 
 </LinearLayout>

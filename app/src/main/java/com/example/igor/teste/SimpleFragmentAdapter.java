@@ -17,9 +17,9 @@ public class SimpleFragmentAdapter extends FragmentPagerAdapter {
         } else if (i == 1) {
             return new RestaurantFragment();
         } else if (i == 2) {
-            return null;
+            return new AttractionsFragment();
         } else if (i == 3) {
-            return null;
+            return new CityFragment();
         } else {
             return null;
         }
@@ -27,6 +27,6 @@ public class SimpleFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 4;
     }
 }
