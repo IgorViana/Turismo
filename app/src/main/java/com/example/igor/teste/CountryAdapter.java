@@ -2,6 +2,7 @@ package com.example.igor.teste;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -72,8 +73,17 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
                 //activity.getSupportFragmentManager().beginTransaction().replace(R.id.viewpager, myFragment).commit();
 
                 ViewPager viewPager = (ViewPager) activity.findViewById(R.id.viewpager);
+
+                Fragment fragment = new MapsActivity();
+                Bundle bundle = new Bundle();
+                bundle.putDouble("lat", -34);
+                bundle.putDouble("long",  250);
+                fragment.setArguments(bundle);
+
+
                 // Set the adapter onto the view pager
                 viewPager.setCurrentItem(4);
+
 
             }
         });
