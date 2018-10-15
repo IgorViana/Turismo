@@ -1,18 +1,26 @@
 package com.example.igor.teste;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> {
 
+    private Context context;
     private String[] name;
     private int[] imageId;
     private LayoutInflater mInflater;
@@ -33,9 +41,42 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CountryAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull CountryAdapter.ViewHolder viewHolder, final int i) {
         viewHolder.myTextView.setText(name[i]);
         viewHolder.myImageId.setImageResource(imageId[i]);
+
+        viewHolder.myImageId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*int clickPosition = i;
+
+                final Intent intent;
+                switch (clickPosition){
+                    case 0:
+                        intent =  new Intent(context, MapsActivity.class);
+                        break;
+
+                    case 1:
+                        intent =  new Intent(context, MapsActivity.class);
+                        break;
+
+                    default:
+                        intent =  new Intent(context, MapsActivity.class);
+                        break;
+                } */
+                //You can change the fragment, something like this, not tested, please correct for your desired output:
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+
+                //Create a bundle to pass data, add data, set the bundle to your fragment and:
+                //activity.getSupportFragmentManager().beginTransaction().attach(myFragment).commit();
+                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.viewpager, myFragment).commit();
+
+                ViewPager viewPager = (ViewPager) activity.findViewById(R.id.viewpager);
+                // Set the adapter onto the view pager
+                viewPager.setCurrentItem(4);
+
+            }
+        });
     }
 
     @Override
@@ -50,70 +91,9 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
 
         ViewHolder(View itemView) {
             super(itemView);
+            context = itemView.getContext();
             myTextView = itemView.findViewById(R.id.CountryName);
             myImageId = itemView.findViewById(R.id.CountryImage);
         }
     }
-    /*public View getView(int position, View convertView, ViewGroup parent) {
-        View listItemView = convertView;
-        if(listItemView == null)
-        {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.state, parent, false);
-        }
-        State currentCounty = getItem(position);
-
-        ImageView countryImage = listItemView.findViewById(R.id.CountryImage);
-        countryImage.setImageResource(currentCounty.getImageResourceId());
-
-        TextView countryName = listItemView.findViewById(R.id.CountryName);
-        countryName.setText(currentCounty.getmStateName());
-
-        return listItemView;
-    }*/
-
-    /* private Context context;
-    private final String[] gridViewString;
-    private final int[] gridViewImageId;
-
-    public CountryAdapter(Context context, String[]gridViewString, int[]gridViewImageId) {
-        //super(context, 0, country);
-        this.context = context;
-        this.gridViewString = gridViewString;
-        this.gridViewImageId = gridViewImageId;
-    }
-
-    @Override
-    public int getCount() {
-        return gridViewString.length;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return gridViewImageId[position];
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View gridViewAndroid;
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        if (convertView == null) {
-
-            gridViewAndroid = new View(context);
-            gridViewAndroid = inflater.inflate(R.layout.state, null);
-            TextView textViewAndroid = (TextView) gridViewAndroid.findViewById(R.id.CountryName);
-            ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.CountryImage);
-            textViewAndroid.setText(gridViewString[position]);
-            imageViewAndroid.setImageResource(gridViewImageId[position]);
-        } else {
-            gridViewAndroid = (View) convertView;
-        }
-
-        return gridViewAndroid; */
 }
