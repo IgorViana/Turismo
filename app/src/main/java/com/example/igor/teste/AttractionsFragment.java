@@ -34,6 +34,13 @@ public class AttractionsFragment extends Fragment {
 
         adapter = new CountryAdapter(rootView.getContext(), attractionNameString, attractionImageId);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListner(new CountryAdapter.OnItemClickListner() {
+
+            @Override
+            public void OnItemClicked(View view, int position) {
+
+            }
+        });
 
         // Inflate the layout for this fragment
         return rootView;

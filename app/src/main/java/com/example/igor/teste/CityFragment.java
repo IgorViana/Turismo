@@ -12,19 +12,20 @@ import android.view.ViewGroup;
 
 public class CityFragment extends Fragment {
     RestaurantAdapter adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_city, container, false);
 
         String[] cityNameString = {"Vacouver", "Toronto", "Ottawa", "Montreal", "Winnipeg", "Québec"};
-        String[] cityPopulationString = {"647.540", "2.731.571", "947.031", "1.704.694" , "709.253", "531.902"};
+        String[] cityPopulationString = {"647.540", "2.731.571", "947.031", "1.704.694", "709.253", "531.902"};
 
         RecyclerView recyclerView = rootView.findViewById(R.id.rvCity);
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
 
-        adapter = new RestaurantAdapter(rootView.getContext(),cityNameString, cityPopulationString);
+        adapter = new RestaurantAdapter(rootView.getContext(), cityNameString, cityPopulationString);
         recyclerView.setAdapter(adapter);
         // Inflate the layout for this fragment
         return rootView;

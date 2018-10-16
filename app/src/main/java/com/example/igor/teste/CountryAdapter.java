@@ -1,7 +1,9 @@
 package com.example.igor.teste;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Observable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -27,6 +29,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     private String[] name;
     private int[] imageId;
     private LayoutInflater mInflater;
+    OnItemClickListner onItemClickListner;
 
     // data is passed into the constructor
     public CountryAdapter(Context context, String[] data, int[] imageId) {
@@ -44,16 +47,24 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CountryAdapter.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final CountryAdapter.ViewHolder viewHolder, final int i) {
         viewHolder.myTextView.setText(name[i]);
         viewHolder.myImageId.setImageResource(imageId[i]);
-
         viewHolder.myImageId.setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View v) {
+                onItemClickListner.OnItemClicked(v, i);
+            }
+        });
+        /*viewHolder.myImageId.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
             public void onClick(View view) {
+                //You can change the fragment, something like this, not tested, please correct for your desired output:
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+
                 LatLng newLocation;
-                final Intent intent;
-                switch (i){
+                switch (i) {
                     case 0:
                         newLocation = new LatLng(48, -83);
                         break;
@@ -91,31 +102,22 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
                         break;
 
                     case 9:
-                        newLocation = new LatLng(46,  -63);
+                        newLocation = new LatLng(46, -63);
                         break;
 
                     default:
                         newLocation = new LatLng(-34, 151);
                         break;
                 }
-                //You can change the fragment, something like this, not tested, please correct for your desired output:
-                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-
                 //Create a bundle to pass data, add data, set the bundle to your fragment and:
                 //activity.getSupportFragmentManager().beginTransaction().attach(myFragment).commit();
                 //activity.getSupportFragmentManager().beginTransaction().replace(R.id.viewpager, myFragment).commit();
-
                 ViewPager viewPager = (ViewPager) activity.findViewById(R.id.viewpager);
-
-
-                ((MainActivity)context).setMapLocation(newLocation);
-
+                ((MainActivity) context).setMapLocation(newLocation);
                 // Set the adapter onto the view pager
                 viewPager.setCurrentItem(4);
-
-
             }
-        });
+        });*/
     }
 
     @Override
@@ -124,7 +126,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     }
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView myTextView;
         ImageView myImageId;
 
@@ -134,5 +136,13 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
             myTextView = itemView.findViewById(R.id.CountryName);
             myImageId = itemView.findViewById(R.id.CountryImage);
         }
+    }
+
+    public interface OnItemClickListner {
+        void OnItemClicked(View view, int position);
+    }
+
+    public void setOnItemClickListner(OnItemClickListner onItemClickListner) {
+        this.onItemClickListner = onItemClickListner;
     }
 }
