@@ -4,8 +4,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
 
 public class MainActivity extends AppCompatActivity {
+
+    private LatLng position = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +34,14 @@ public class MainActivity extends AppCompatActivity {
         //   3. Definir os nomes da aba do layout da aba com os títulos do adapter do view pager
         //      chamando onPageTitle()
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    public void setMapLocation(LatLng position){
+        Toast.makeText(this, "Nova POsição" + position , Toast.LENGTH_SHORT).show();
+        this.position = position;
+    }
+
+    public LatLng getMapLocation(){
+        return position;
     }
 }

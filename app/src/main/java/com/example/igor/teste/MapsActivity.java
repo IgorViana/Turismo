@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,12 +31,13 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_maps, container, false);
 
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            double myLat = bundle.getDouble("Lat", 0);
-            double myLong = bundle.getDouble("Long", 0);
-            position = new LatLng(myLat, myLong);
+        if(((MainActivity)getActivity()).getMapLocation() != null)
+        {
+            position = ((MainActivity) getActivity()).getMapLocation();
+        }else{
+            position = new LatLng(56.1304,-106.3468);
         }
+
 
         mMapView = (MapView) rootView.findViewById(R.id.idMap);
         mMapView.onCreate(savedInstanceState);
@@ -57,16 +59,13 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
                 //googleMap.setMyLocationEnabled(true);
 
                 // For dropping a marker at a point on the Map
-                LatLng sydney = new LatLng(-34, 151);
-                googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker Title").snippet("Marker Description"));
+                //LatLng sydney = new LatLng(-34, 151);
+                //googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker Title").snippet("Marker Description"));
 
-                LatLng teste = position;
-                if(teste != null)
-                googleMap.addMarker(new MarkerOptions().position(teste).title("Marker Title").snippet("Marker Description"));
 
                 // For zooming automatically to the location of the marker
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
-                CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(56.1304,-106.3468));
+                //CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
+                CameraUpdate center = CameraUpdateFactory.newLatLng(position);
                 CameraUpdate zoom = CameraUpdateFactory.zoomTo(3);
                 googleMap.moveCamera(center);
                 googleMap.animateCamera(zoom);
@@ -100,7 +99,6 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
         super.onLowMemory();
         mMapView.onLowMemory();
     }
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

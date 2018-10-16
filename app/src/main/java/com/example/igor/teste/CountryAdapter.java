@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> {
@@ -49,22 +51,53 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         viewHolder.myImageId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*int clickPosition = i;
-
+                LatLng newLocation;
                 final Intent intent;
-                switch (clickPosition){
+                switch (i){
                     case 0:
-                        intent =  new Intent(context, MapsActivity.class);
+                        newLocation = new LatLng(48, -83);
                         break;
 
                     case 1:
-                        intent =  new Intent(context, MapsActivity.class);
+                        newLocation = new LatLng(46, -71);
+                        break;
+
+                    case 2:
+                        newLocation = new LatLng(53, -127);
+                        break;
+
+                    case 3:
+                        newLocation = new LatLng(53, -113);
+                        break;
+
+                    case 4:
+                        newLocation = new LatLng(45, -62);
+                        break;
+
+                    case 5:
+                        newLocation = new LatLng(53, -98);
+                        break;
+
+                    case 6:
+                        newLocation = new LatLng(52, -106);
+                        break;
+
+                    case 7:
+                        newLocation = new LatLng(46, -66);
+                        break;
+
+                    case 8:
+                        newLocation = new LatLng(48, -54);
+                        break;
+
+                    case 9:
+                        newLocation = new LatLng(46,  -63);
                         break;
 
                     default:
-                        intent =  new Intent(context, MapsActivity.class);
+                        newLocation = new LatLng(-34, 151);
                         break;
-                } */
+                }
                 //You can change the fragment, something like this, not tested, please correct for your desired output:
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
 
@@ -74,12 +107,8 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
 
                 ViewPager viewPager = (ViewPager) activity.findViewById(R.id.viewpager);
 
-                Fragment fragment = new MapsActivity();
-                Bundle bundle = new Bundle();
-                bundle.putDouble("lat", -34);
-                bundle.putDouble("long",  250);
-                fragment.setArguments(bundle);
 
+                ((MainActivity)context).setMapLocation(newLocation);
 
                 // Set the adapter onto the view pager
                 viewPager.setCurrentItem(4);
