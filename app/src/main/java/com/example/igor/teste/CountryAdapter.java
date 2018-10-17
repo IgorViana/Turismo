@@ -29,7 +29,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     private String[] name;
     private int[] imageId;
     private LayoutInflater mInflater;
-    OnItemClickListner onItemClickListner;
+    OnItemClickListener onItemClickListener;
 
     // data is passed into the constructor
     public CountryAdapter(Context context, String[] data, int[] imageId) {
@@ -50,12 +50,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     public void onBindViewHolder(@NonNull final CountryAdapter.ViewHolder viewHolder, final int i) {
         viewHolder.myTextView.setText(name[i]);
         viewHolder.myImageId.setImageResource(imageId[i]);
-        viewHolder.myImageId.setOnClickListener(new View.OnClickListener() {
+        /*viewHolder.myImageId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListner.OnItemClicked(v, i);
+                onItemClickListener.OnItemClicked(v, i);
             }
-        });
+        });*/
         /*viewHolder.myImageId.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceType")
             @Override
@@ -126,7 +126,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     }
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
         ImageView myImageId;
 
@@ -135,14 +135,21 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
             context = itemView.getContext();
             myTextView = itemView.findViewById(R.id.CountryName);
             myImageId = itemView.findViewById(R.id.CountryImage);
+            myImageId.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(onItemClickListener != null)
+                onItemClickListener.OnItemClicked(v, getAdapterPosition());
         }
     }
 
-    public interface OnItemClickListner {
+    public interface OnItemClickListener {
         void OnItemClicked(View view, int position);
     }
 
-    public void setOnItemClickListner(OnItemClickListner onItemClickListner) {
-        this.onItemClickListner = onItemClickListner;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

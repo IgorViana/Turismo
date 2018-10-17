@@ -48,7 +48,7 @@ public class CountryFragment extends Fragment {
 
         adapter = new CountryAdapter(rootView.getContext(), gridViewString, gridViewImageId);
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListner(new CountryAdapter.OnItemClickListner(){
+        adapter.setOnItemClickListener(new CountryAdapter.OnItemClickListener(){
 
             @Override
             public void OnItemClicked(View view, int position) {
