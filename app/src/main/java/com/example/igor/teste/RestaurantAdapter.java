@@ -14,6 +14,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     private String[] name;
     private String[] location;
     private LayoutInflater mInflater;
+    OnRestaurantClickListener onRestaurantClickListener;
 
     public RestaurantAdapter(Context context, String[] name, String[] location) {
         this.mInflater = LayoutInflater.from(context);
@@ -40,7 +41,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     }
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView testViewLocation;
         TextView testViewPlace;
 
@@ -48,6 +49,21 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             super(itemView);
             testViewLocation = itemView.findViewById(R.id.placeLocation);
             testViewPlace = itemView.findViewById(R.id.placeName);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if(onRestaurantClickListener != null)
+                onRestaurantClickListener.OnRestaurantClicked(v, getAdapterPosition());
+        }
+    }
+
+    public interface OnRestaurantClickListener {
+        void OnRestaurantClicked(View view, int position);
+    }
+
+    public void setOnRestaurantClickListener(RestaurantAdapter.OnRestaurantClickListener onRestaurantClickListener) {
+        this.onRestaurantClickListener = onRestaurantClickListener;
     }
 }
