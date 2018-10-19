@@ -66,7 +66,7 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
                 // For zooming automatically to the location of the marker
                 //CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
                 CameraUpdate center = CameraUpdateFactory.newLatLng(position);
-                CameraUpdate zoom = CameraUpdateFactory.zoomTo(3);
+                CameraUpdate zoom = CameraUpdateFactory.zoomTo(5);
                 googleMap.moveCamera(center);
                 googleMap.animateCamera(zoom);
                // googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));

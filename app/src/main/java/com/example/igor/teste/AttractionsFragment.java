@@ -23,9 +23,9 @@ public class AttractionsFragment extends Fragment {
         String[] attractionNameString = {"Parque Nacional Banff", "Parque Nacional Jasper", "Parque Stanley"
                 , "Torre CN", "Lago Moraine", "Lago Louise"
                 , "Parque Nacional Yoho", "Jardins de Butchart", "Ponte Suspensa de Capilano"};
-        int[] attractionImageId = {R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background
-                , R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background
-                , R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
+        int[] attractionImageId = {R.drawable.banff, R.drawable.jasper, R.drawable.stanley
+                , R.drawable.cn, R.drawable.moraine, R.drawable.louise
+                , R.drawable.yoho, R.drawable.butchart, R.drawable.capilano};
 
         RecyclerView recyclerView = rootView.findViewById(R.id.rvAttraction);
         int numberOfColumns = 3;
