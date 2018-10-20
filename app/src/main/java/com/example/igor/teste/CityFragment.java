@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CityFragment extends Fragment {
     RestaurantAdapter adapter;
 
@@ -18,14 +21,19 @@ public class CityFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_city, container, false);
 
-        String[] cityNameString = {"Vacouver", "Toronto", "Ottawa", "Montreal", "Winnipeg", "Québec"};
-        String[] cityPopulationString = {"647.540", "2.731.571", "947.031", "1.704.694", "709.253", "531.902"};
+        List<Place> placeList = new ArrayList<>();
+        placeList.add(new Place(getResources().getString(R.string.cidade1), getResources().getString(R.string.habitantes1)));
+        placeList.add(new Place(getResources().getString(R.string.cidade2), getResources().getString(R.string.habitantes2)));
+        placeList.add(new Place(getResources().getString(R.string.cidade3), getResources().getString(R.string.habitantes3)));
+        placeList.add(new Place(getResources().getString(R.string.cidade4), getResources().getString(R.string.habitantes4)));
+        placeList.add(new Place(getResources().getString(R.string.cidade5), getResources().getString(R.string.habitantes5)));
+        placeList.add(new Place(getResources().getString(R.string.cidade6), getResources().getString(R.string.habitantes6)));
 
         RecyclerView recyclerView = rootView.findViewById(R.id.rvCity);
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
 
-        adapter = new RestaurantAdapter(rootView.getContext(), cityNameString, cityPopulationString);
+        adapter = new RestaurantAdapter(rootView.getContext(), placeList);
         recyclerView.setAdapter(adapter);
         // Inflate the layout for this fragment
         return rootView;

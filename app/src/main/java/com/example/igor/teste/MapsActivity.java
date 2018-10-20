@@ -39,7 +39,7 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
         }
 
 
-        mMapView = (MapView) rootView.findViewById(R.id.idMap);
+        mMapView = rootView.findViewById(R.id.idMap);
         mMapView.onCreate(savedInstanceState);
 
         mMapView.onResume(); // needed to get the map to display immediately

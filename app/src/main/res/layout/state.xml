@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/CountryImage"
-        android:layout_width="150dp"
+        android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         android:scaleType="centerCrop"
@@ -15,6 +15,5 @@
 
     <TextView
         android:id="@+id/CountryName"
-        style="@style/NormalTextCard"
-        android:textAlignment="center" />
+        style="@style/NormalTextCard" />
 </LinearLayout>

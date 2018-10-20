@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,9 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CountryFragment extends Fragment {
+public class CountryFragment extends Fragment implements CardClickListener{
 
     CountryAdapter adapter;
 
@@ -30,86 +32,33 @@ public class CountryFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_country, container, false);
 
-        String[] gridViewString = {"Ontário", "Quebec", "Colúmbia Britânica", "Alberta", "Nova Escócia", "Manitoba",
-                "Saskatchewan", "New Brunswick", "Terra Nova e Labrador", "Ilha do Príncipe Eduardo\n"};
-        int[] gridViewImageId = {R.drawable.ontario, R.drawable.quebec,
-                R.drawable.columbia_britanica, R.drawable.alberta,
-                R.drawable.novaescocia, R.drawable.manitoba,
-                R.drawable.saskatchewan, R.drawable.new_burnswick,
-                R.drawable.terranovaelabrador, R.drawable.ilhaprincipeedward};
+        List<State> stateList = new ArrayList<>();
+        stateList.add(new State(R.drawable.ontario, getResources().getString(R.string.provincia1), new LatLng(48, -83)));
+        stateList.add(new State(R.drawable.quebec, getResources().getString(R.string.provincia2), new LatLng(46, -71)));
+        stateList.add(new State(R.drawable.columbia_britanica, getResources().getString(R.string.provincia3), new LatLng(53, -127)));
+        stateList.add(new State(R.drawable.alberta, getResources().getString(R.string.provincia4), new LatLng(53, -113)));
+        stateList.add(new State(R.drawable.novaescocia, getResources().getString(R.string.provincia5), new LatLng(45, -62)));
+        stateList.add(new State(R.drawable.manitoba, getResources().getString(R.string.provincia6), new LatLng(53, -98)));
+        stateList.add(new State(R.drawable.saskatchewan, getResources().getString(R.string.provincia7), new LatLng(52, -106)));
+        stateList.add(new State(R.drawable.new_burnswick, getResources().getString(R.string.provincia8), new LatLng(46, -66)));
+        stateList.add(new State(R.drawable.terranovaelabrador, getResources().getString(R.string.provincia9), new LatLng(48, -54)));
+        stateList.add(new State(R.drawable.ilhaprincipeedward, getResources().getString(R.string.provincia10), new LatLng(46, -63)));
+        //stateList.add(new State(R.drawable.ontario, getResources().getString(R.string.provincia1), new LatLng(-34, 151)));
 
         RecyclerView recyclerView = rootView.findViewById(R.id.rvStates);
-        int numberOfColumns = 2;
-        AutoGridLayoutManager layoutManager = new AutoGridLayoutManager(rootView.getContext(), 500);
-        recyclerView.setLayoutManager(layoutManager);
-        //GridLayoutManager grid = new GridLayoutManager(rootView.getContext(), numberOfColumns);
-
-        //recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), numberOfColumns));
-
-        adapter = new CountryAdapter(rootView.getContext(), gridViewString, gridViewImageId);
+        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
+        adapter = new CountryAdapter(rootView.getContext(), stateList, this);
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new CountryAdapter.OnItemClickListener(){
-
-            @Override
-            public void OnItemClicked(View view, int position) {
-
-                LatLng newLocation;
-                switch (position) {
-                    case 0:
-                        newLocation = new LatLng(48, -83);
-                        break;
-
-                    case 1:
-                        newLocation = new LatLng(46, -71);
-                        break;
-
-                    case 2:
-                        newLocation = new LatLng(53, -127);
-                        break;
-
-                    case 3:
-                        newLocation = new LatLng(53, -113);
-                        break;
-
-                    case 4:
-                        newLocation = new LatLng(45, -62);
-                        break;
-
-                    case 5:
-                        newLocation = new LatLng(53, -98);
-                        break;
-
-                    case 6:
-                        newLocation = new LatLng(52, -106);
-                        break;
-
-                    case 7:
-                        newLocation = new LatLng(46, -66);
-                        break;
-
-                    case 8:
-                        newLocation = new LatLng(48, -54);
-                        break;
-
-                    case 9:
-                        newLocation = new LatLng(46, -63);
-                        break;
-
-                    default:
-                        newLocation = new LatLng(-34, 151);
-                        break;
-                }
-                //Create a bundle to pass data, add data, set the bundle to your fragment and:
-                //activity.getSupportFragmentManager().beginTransaction().attach(myFragment).commit();
-                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.viewpager, myFragment).commit();
-                ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
-                ((MainActivity) getContext()).setMapLocation(newLocation);
-                // Set the adapter onto the view pager
-                viewPager.setCurrentItem(4);
-            }
-        });
         // Inflate the layout for this fragment
         return rootView;
     }
 
+    @Override
+    public void onCardSelected(State state) {
+        LatLng newLocation = state.getmLagLng();
+        ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
+        ((MainActivity) getContext()).setMapLocation(newLocation);
+        // Set the adapter onto the view pager
+        viewPager.setCurrentItem(4);
+    }
 }

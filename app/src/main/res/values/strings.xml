@@ -12,4 +12,82 @@
     <string name="nome">Nome</string>
     <string name="localizaco">Localização</string>
     <string name="populacao">População</string>
+
+    <!-- RESOURCE DE RESTAURANTE -->
+    <string name="restaurante1">Alo</string>
+    <string name="restaurante2">Toqué!</string>
+    <string name="restaurante3">Joe Beef</string>
+    <string name="restaurante4">Buca Osteria &amp; Bar</string>
+    <string name="restaurante5">Langdon Hall</string>
+    <string name="restaurante6">Montréal Plaza</string>
+    <string name="restaurante7">Raymonds </string>
+    <string name="restaurante8">Le Vin Papillon</string>
+    <string name="restaurante9">Edulis</string>
+    <string name="restaurante10">Kissa Tanto</string>
+
+    <!-- RESOURCE DE ENDEREÇOS DE RESTAURANTE -->
+    <string name="endereco1">Toronto, Ont</string>
+    <string name="endereco2">Montreal, Que</string>
+    <string name="endereco3">Montreal, Que</string>
+    <string name="endereco4">Toronto, Ont</string>
+    <string name="endereco5">Cambridge, Ont</string>
+    <string name="endereco6">Montreal, Que</string>
+    <string name="endereco7">St. John\'s, Nl</string>
+    <string name="endereco8">Montreal, Que</string>
+    <string name="endereco9">Toronto, Ont</string>
+    <string name="endereco10">Vancouver, BC</string>
+
+    <!-- RESOURCE DE RESTAURANTES URIS -->
+    <string name="uri1">https://goo.gl/maps/FRguyKLEidm</string>
+    <string name="uri2">https://goo.gl/maps/q4Undf4F6382</string>
+    <string name="uri3">https://goo.gl/maps/KVZeqrjVoxr</string>
+    <string name="uri4">https://goo.gl/maps/gg9FtCQG44x</string>
+    <string name="uri5">https://goo.gl/maps/tHy58fHLshE2</string>
+    <string name="uri6">https://goo.gl/maps/KNqynyrUPUy</string>
+    <string name="uri7">https://goo.gl/maps/XyYoAX3bevD2</string>
+    <string name="uri8">https://goo.gl/maps/cZXzKy3zxrk</string>
+    <string name="uri9">https://goo.gl/maps/ELFJj7qggyE2</string>
+    <string name="uri10">https://goo.gl/maps/gn4eJjtmfCr</string>
+    <string name="uri1Default">https://goo.gl/maps/i4rgU4wZTNN2</string>
+
+    <!-- RESOURCE DE NOMES DE CIDADES -->
+    <string name="cidade1">Vacouver</string>
+    <string name="cidade2">Toronto</string>
+    <string name="cidade3">Ottawa</string>
+    <string name="cidade4">Montreal</string>
+    <string name="cidade5">Winnipeg</string>
+    <string name="cidade6">Québec</string>
+
+    <!-- RESOURCE DE NOMES DE CIDADES -->
+    <string name="habitantes1">647.540</string>
+    <string name="habitantes2">2.731.571</string>
+    <string name="habitantes3">947.031</string>
+    <string name="habitantes4">1.704.694</string>
+    <string name="habitantes5">709.253</string>
+    <string name="habitantes6">531.902</string>
+
+
+    <!-- RESOURCE DE NOMES DE PROVINCIAS -->
+    <string name="provincia1">Ontário</string>
+    <string name="provincia2">Quebec</string>
+    <string name="provincia3">Colúmbia Britânica</string>
+    <string name="provincia4">Alberta</string>
+    <string name="provincia5">Nova Escócia</string>
+    <string name="provincia6">Manitoba</string>
+    <string name="provincia7">Saskatchewan</string>
+    <string name="provincia8">New Brunswick</string>
+    <string name="provincia9">Terra Nova e Labrador</string>
+    <string name="provincia10">Ilha do Príncipe Edward</string>
+
+
+    <!-- RESOURCE DE NOMES DE ATRAÇÕES -->
+    <string name="atracao1">Parque Nacional Banff</string>
+    <string name="atracao2">Parque Nacional Jasper</string>
+    <string name="atracao3">Parque Stanley</string>
+    <string name="atracao4">Torre CN</string>
+    <string name="atracao5">Lago Moraine</string>
+    <string name="atracao6">Lago Louise</string>
+    <string name="atracao7">Parque Nacional Yoho</string>
+    <string name="atracao8">Jardins de Butchart</string>
+    <string name="atracao9">Ponte Suspensa de Capilano</string>
 </resources>

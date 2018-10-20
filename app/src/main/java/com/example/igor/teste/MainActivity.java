@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setMapLocation(LatLng position){
-        Toast.makeText(this, "Nova POsição" + position , Toast.LENGTH_SHORT).show();
         this.position = position;
     }
 
