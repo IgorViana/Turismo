@@ -12,6 +12,7 @@
     <string name="nome">Nome</string>
     <string name="localizaco">Localização</string>
     <string name="populacao">População</string>
+    <string name="google_maps_key">AIzaSyAzvQtaaoj3MDYM2nrKxp-NzlHspvvRnm4</string>
 
     <!-- RESOURCE DE RESTAURANTE -->
     <string name="restaurante1">Alo</string>
